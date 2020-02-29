@@ -9,7 +9,7 @@ int main()
     int i = 0;
     if (n <= 0)
         exit(0);
-    while (n != 1) {
+    while (n != 1) {// 每一轮都需要进行奇数偶数判断
         if (n % 2 == 0) {//为偶数        
                 n = n / 2;
                 i++;
