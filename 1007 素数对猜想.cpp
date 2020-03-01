@@ -6,49 +6,32 @@
 #include <cmath>
 using namespace std;
 
-vector<int> sushu(int m) {
-    vector<int> s;
-    if (m < 2)
-        return s;
-  
-    s.push_back(2);
-    int k,j;
-    for (int i = 3; i <= m; ++i) {
-       k = sqrt(i);
-       for (j = 2; j <= k; j++)
-           if (i % j == 0)
-               break;
-       if (j > k)
-           s.push_back(i);
-   }
-    
-   /* for (int i = 3; i <=m; ++i) {  //不能把平方根放入 k中 会损失精度
-        for (j = 2; j < sqrt(i); ++j) {
-            if (i % j == 0) {
-                break;
-            }      
-        }
-        if (j>sqrt(i))
-            s.push_back(i);
-      
-    }*/
-    return s;
-}
-void solve_1007() {
-    int n = 0;
+void solve_1007_2() {
+    int n;
+    //scanf("%d", &n);
     cin >> n;
-    int duishu=0;
-    vector<int> s = sushu(n);//素数序列
-    for (vector<int>::iterator it = s.begin(); it < s.end()-1; ++it) {
-        if (*(it + 1) - *it == 2) {
-            duishu++;
+    int j;
+    int pre=0, next=0,cnt=0;
+    for (int i = 2; i <= n; ++i) {
+        for (j = 2; j < sqrt(i); ++j)
+            if (i % j == 0)
+                break;
+        if (j > sqrt(i)) {//为素数
+            if (pre == 0)
+                pre = i;
+            else {
+                next = i;
+                next - pre == 2 ? cnt++, pre = next : pre =next;
+            }
+                
         }
+
     }
-    cout<<duishu;
+    printf("%d", cnt);
 }
 
 int main()
 {       
-    solve_1007();
+    solve_1007_2();
     return 0;
 }
