@@ -14,6 +14,22 @@ void solve_1026() {
     CLK_TCK 每秒的时钟打点数
     runtime = (c2-c1)/CLK_TCK   C1 < C2
     hh:mm:ss（即2位的 时:分:秒）格式输出；不足 1 秒的时间四舍五入到秒。
+    
+    note: 简化代码
+    
+int main(){
+	double a,b,c;
+	int hh,mm,ss;	
+	scanf("%lf %lf",&a,&b);
+	c=(b-a)/100;
+		hh=(int)(c/3600);
+		mm=(int)((c-3600*hh)/60);
+		ss=(int)(c-3600*hh-60*mm);
+		if(c-3600*hh-60*mm-ss>=0.5)
+			ss+=1;
+	printf("%02d:%02d:%02d",hh,mm,ss);
+}
+
     */
     int CT=100;
 ;
